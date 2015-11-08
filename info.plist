@@ -69,7 +69,7 @@
 				<integer>102</integer>
 				<key>script</key>
 				<string>require "json"
-print JSON.load("{query}")["mp4"]</string>
+print JSON.load("{query}")["url"]</string>
 				<key>type</key>
 				<integer>2</integer>
 			</dict>
@@ -88,7 +88,7 @@ print JSON.load("{query}")["mp4"]</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>curl "{query}" --silent --output "$alfred_workflow_cache/giphy.mp4" &amp;&amp; qlmanage -p "$alfred_workflow_cache/giphy.mp4" &gt;&amp; /dev/null</string>
+				<string>curl "{query}" --silent --output "$alfred_workflow_cache/giphy.gif" &amp;&amp; qlmanage -p "$alfred_workflow_cache/giphy.gif" &gt;&amp; /dev/null</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>

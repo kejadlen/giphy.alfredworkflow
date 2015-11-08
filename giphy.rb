@@ -6,6 +6,8 @@ require "alphred"
 require "faraday"
 
 module Giphy
+  API_KEY = "dc6zaTOxFJmzC"
+
   class Gif
     attr_reader :data
 
@@ -20,13 +22,20 @@ module Giphy
       @thumbnail = Thumbnail.new(self.name, url)
     end
 
+    def id
+      self.data["id"]
+    end
+
+    def size
+      self.data["images"]["original"]["size"]
+    end
+
     def name
       self.data["url"].split(?/).last.sub(/\-[^-]+$/, "")
     end
 
     def urls
-      { gif: self.data["images"]["original"]["url"],
-        mp4: self.data["images"]["original"]["mp4"] }
+      Hash[%w[ url mp4 webp ].map {|key| [key, self.data["images"]["original"][key]] }]
     end
   end
 
@@ -54,6 +63,25 @@ module Giphy
       @dir = dir
     end
   end
+
+  class FileSize
+    attr_reader :size
+
+    def initialize(size)
+      @size = size.to_i
+    end
+
+    def to_s
+      "%.1f%s" % case self.size
+                 when (0...1_000)
+                   [self.size, nil]
+                 when (1_000...1_000_000)
+                   [self.size / 1_000.0, "KB"]
+                 else
+                   [self.size / 1_000_000.0, "MB"]
+                 end
+    end
+  end
 end
 
 if __FILE__ == $0
@@ -61,8 +89,8 @@ if __FILE__ == $0
 
   resp = Faraday.get("http://api.giphy.com/v1/gifs/search",
                      { q: query,
-                       limit: 8,
-                       api_key: "dc6zaTOxFJmzC" })
+                       limit: 7,
+                       api_key: Giphy::API_KEY })
   data = JSON.load(resp.body)["data"]
   gifs = data.map {|gif| Giphy::Gif.new(gif) }
 
@@ -77,10 +105,16 @@ if __FILE__ == $0
   items = gifs.map do |gif|
     Alphred::Item.new(
       title: gif.name,
+      subtitle: "#{gif.id} - #{Giphy::FileSize.new(gif.size)}",
       arg: JSON.dump(gif.urls),
       icon: gif.thumbnail.path,
     )
   end
+
+  items << Alphred::Item.new(
+    title: "(Powered By Giphy)",
+    icon: "icon.png",
+  )
 
   puts Alphred::Items.new(*items).to_xml
 end
