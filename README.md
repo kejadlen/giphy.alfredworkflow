@@ -6,3 +6,9 @@ direct URL of the gif to the clipboard.
 
 [alfred]: https://www.alfredapp.com/
 [giphy]: http://giphy.com/
+
+## TODO
+
+- Get a production Giphy API key?
+- Copy the link to the Giphy page (instead of the gif) with a keyboard
+  modifier.
