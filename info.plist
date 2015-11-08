@@ -12,7 +12,37 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>29326003-8B28-4D06-ACFD-00F6C8214ACB</string>
+				<string>FF2DAFF4-2EF6-427C-A48F-A71F47A52E8D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>FF2DAFF4-2EF6-427C-A48F-A71F47A52E8D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>21CA0C10-1AC1-44DA-A415-E53C081F77AE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -33,6 +63,45 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "json"
+print JSON.load("{query}")["mp4"]</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FF2DAFF4-2EF6-427C-A48F-A71F47A52E8D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>curl "{query}" --silent --output "$alfred_workflow_cache/giphy.mp4" &amp;&amp; qlmanage -p "$alfred_workflow_cache/giphy.mp4" &gt;&amp; /dev/null</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>21CA0C10-1AC1-44DA-A415-E53C081F77AE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -50,7 +119,7 @@
 				<key>runningsubtext</key>
 				<string>Searching Giphy...</string>
 				<key>script</key>
-				<string>ruby giphy.rb {query}</string>
+				<string>ruby giphy.rb "{query}"</string>
 				<key>title</key>
 				<string>Search Giphy</string>
 				<key>type</key>
@@ -71,12 +140,32 @@
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
-				<string></string>
+				<string>{query}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>29326003-8B28-4D06-ACFD-00F6C8214ACB</string>
+			<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "json"
+print JSON.load("{query}")["gif"]</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -88,9 +177,24 @@
 		<key>0744A6DC-F5C1-4D81-8056-8C281A5494D2</key>
 		<dict>
 			<key>ypos</key>
+			<real>70</real>
+		</dict>
+		<key>21CA0C10-1AC1-44DA-A415-E53C081F77AE</key>
+		<dict>
+			<key>ypos</key>
 			<real>10</real>
 		</dict>
-		<key>29326003-8B28-4D06-ACFD-00F6C8214ACB</key>
+		<key>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>FF2DAFF4-2EF6-427C-A48F-A71F47A52E8D</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
