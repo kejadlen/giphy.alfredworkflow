@@ -158,7 +158,7 @@ print JSON.load("{query}")["url"]</string>
 				<integer>102</integer>
 				<key>script</key>
 				<string>require "json"
-print JSON.load("{query}")["gif"]</string>
+print JSON.load("{query}")["url"]</string>
 				<key>type</key>
 				<integer>2</integer>
 			</dict>
