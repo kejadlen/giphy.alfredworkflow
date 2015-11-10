@@ -19,7 +19,7 @@ module Giphy
       return @thumbnail if defined?(@thumbnail)
 
       url = self.data["images"]["fixed_width_small_still"]["url"]
-      @thumbnail = Thumbnail.new(self.name, url)
+      @thumbnail = Thumbnail.new(self.id, url)
     end
 
     def id
@@ -40,19 +40,21 @@ module Giphy
   end
 
   class Thumbnail
-    attr_reader *%i[ name url ]
+    attr_reader *%i[ id url ]
 
-    def initialize(name, url)
-      @name, @url = name, url
+    def initialize(id, url)
+      @id, @url = id, url
     end
 
     def download!
+      return if File.exist?(self.path)
+
       File.write(self.path, Faraday.get(url).body, mode: ?w)
     end
 
     def path
       ext = File.extname(self.url)
-      File.join(self.dir, "#{self.name}#{ext}")
+      File.join(self.dir, "#{self.id}#{ext}")
     end
 
     def dir

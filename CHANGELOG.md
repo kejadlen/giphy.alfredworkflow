@@ -1,4 +1,6 @@
 ## Unreleased
+### Changed
+- Don't download already downloaded thumbnails.
 
 ## 1.0.1 - 2015.11.08
 ### Changed
