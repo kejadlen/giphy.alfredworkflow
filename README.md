@@ -11,7 +11,7 @@ direct URL of the gif to the clipboard.
 
 Download the latest release [here][releases].
 
-[releases]: [https://github.com/kejadlen/giphy.alfredworkflow/releases]
+[releases]: https://github.com/kejadlen/giphy.alfredworkflow/releases
 
 ## TODO
 
