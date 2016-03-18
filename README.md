@@ -7,6 +7,12 @@ direct URL of the gif to the clipboard.
 [alfred]: https://www.alfredapp.com/
 [giphy]: http://giphy.com/
 
+## Installation
+
+Download the latest release [here][releases].
+
+[releases]: [https://github.com/kejadlen/giphy.alfredworkflow/releases]
+
 ## TODO
 
 - Get a production Giphy API key?
