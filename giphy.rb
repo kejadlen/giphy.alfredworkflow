@@ -1,12 +1,12 @@
-$LOAD_PATH.unshift(File.expand_path("../vendor/bundle", __FILE__))
-require "bundler/setup"
-require "json"
+$LOAD_PATH.unshift(File.expand_path('../vendor/bundle', __FILE__))
+require 'bundler/setup'
+require 'json'
 
-require "alphred"
-require "faraday"
+require 'alphred'
+require 'faraday'
 
 module Giphy
-  API_KEY = "dc6zaTOxFJmzC"
+  API_KEY = 'dc6zaTOxFJmzC'
 
   class Gif
     attr_reader :data
@@ -18,24 +18,24 @@ module Giphy
     def thumbnail
       return @thumbnail if defined?(@thumbnail)
 
-      url = self.data["images"]["fixed_width_small_still"]["url"]
+      url = self.data['images']['fixed_width_small_still']['url']
       @thumbnail = Thumbnail.new(self.id, url)
     end
 
     def id
-      self.data["id"]
+      self.data['id']
     end
 
     def size
-      self.data["images"]["original"]["size"]
+      self.data['images']['original']['size']
     end
 
     def name
-      self.data["url"].split(?/).last.sub(/\-[^-]+$/, "")
+      self.data['url'].split(?/).last.sub(/\-[^-]+$/, '')
     end
 
     def urls
-      Hash[%w[ url mp4 webp ].map {|key| [key, self.data["images"]["original"][key]] }]
+      Hash[%w[ url mp4 webp ].map {|key| [key, self.data['images']['original'][key]] }]
     end
   end
 
@@ -60,7 +60,7 @@ module Giphy
     def dir
       return @dir if defined?(@dir)
 
-      dir = File.expand_path(ENV["alfred_workflow_cache"])
+      dir = File.expand_path(ENV['alfred_workflow_cache'])
       Dir.mkdir(dir) unless Dir.exist?(dir)
       @dir = dir
     end
@@ -74,13 +74,13 @@ module Giphy
     end
 
     def to_s
-      "%.1f%s" % case self.size
+      '%.1f%s' % case self.size
                  when (0...1_000)
                    [self.size, nil]
                  when (1_000...1_000_000)
-                   [self.size / 1_000.0, "KB"]
+                   [self.size / 1_000.0, 'KB']
                  else
-                   [self.size / 1_000_000.0, "MB"]
+                   [self.size / 1_000_000.0, 'MB']
                  end
     end
   end
@@ -89,11 +89,11 @@ end
 if __FILE__ == $0
   query = ARGV.shift
 
-  resp = Faraday.get("http://api.giphy.com/v1/gifs/search",
+  resp = Faraday.get('http://api.giphy.com/v1/gifs/search',
                      { q: query,
                        limit: 9,
                        api_key: Giphy::API_KEY })
-  data = JSON.load(resp.body)["data"]
+  data = JSON.load(resp.body)['data']
   gifs = data.map {|gif| Giphy::Gif.new(gif) }
 
   threads = gifs.map do |gif|
@@ -114,8 +114,8 @@ if __FILE__ == $0
   end
 
   # items << Alphred::Item.new(
-  #   title: "[Powered By Giphy]",
-  #   icon: "icon.png",
+  #   title: '[Powered By Giphy]',
+  #   icon: 'icon.png',
   # )
 
   puts Alphred::Items.new(*items).to_xml
