@@ -12,41 +12,23 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>FF2DAFF4-2EF6-427C-A48F-A71F47A52E8D</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>FF2DAFF4-2EF6-427C-A48F-A71F47A52E8D</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
 				<string>21CA0C10-1AC1-44DA-A415-E53C081F77AE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -68,40 +50,26 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>require "json"
-print JSON.load("{query}")["url"]</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>FF2DAFF4-2EF6-427C-A48F-A71F47A52E8D</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
 				<string>curl "{query}" --silent --output "$alfred_workflow_cache/giphy.gif" &amp;&amp; qlmanage -p "$alfred_workflow_cache/giphy.gif" &gt;&amp; /dev/null</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.script</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>21CA0C10-1AC1-44DA-A415-E53C081F77AE</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -120,6 +88,12 @@ print JSON.load("{query}")["url"]</string>
 				<string>Searching Giphy...</string>
 				<key>script</key>
 				<string>ruby giphy.rb "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
 				<key>title</key>
 				<string>Search Giphy</string>
 				<key>type</key>
@@ -132,7 +106,7 @@ print JSON.load("{query}")["url"]</string>
 			<key>uid</key>
 			<string>0744A6DC-F5C1-4D81-8056-8C281A5494D2</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -141,33 +115,15 @@ print JSON.load("{query}")["url"]</string>
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>transient</key>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
 			<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
 			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>require "json"
-print JSON.load("{query}")["url"]</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</string>
-			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -176,28 +132,24 @@ print JSON.load("{query}")["url"]</string>
 	<dict>
 		<key>0744A6DC-F5C1-4D81-8056-8C281A5494D2</key>
 		<dict>
+			<key>xpos</key>
+			<integer>210</integer>
 			<key>ypos</key>
-			<real>70</real>
+			<integer>130</integer>
 		</dict>
 		<key>21CA0C10-1AC1-44DA-A415-E53C081F77AE</key>
 		<dict>
+			<key>xpos</key>
+			<integer>530</integer>
 			<key>ypos</key>
-			<real>10</real>
-		</dict>
-		<key>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</key>
-		<dict>
-			<key>ypos</key>
-			<real>130</real>
+			<integer>60</integer>
 		</dict>
 		<key>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</key>
 		<dict>
+			<key>xpos</key>
+			<integer>530</integer>
 			<key>ypos</key>
-			<real>130</real>
-		</dict>
-		<key>FF2DAFF4-2EF6-427C-A48F-A71F47A52E8D</key>
-		<dict>
-			<key>ypos</key>
-			<real>10</real>
+			<integer>210</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

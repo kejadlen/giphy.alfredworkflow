@@ -18,24 +18,34 @@ module Giphy
     def thumbnail
       return @thumbnail if defined?(@thumbnail)
 
-      url = self.data['images']['fixed_width_small_still']['url']
-      @thumbnail = Thumbnail.new(self.id, url)
+      url = data['images']['fixed_width_small_still']['url']
+      @thumbnail = Thumbnail.new(id, url)
     end
 
     def id
-      self.data['id']
+      data['id']
     end
 
     def size
-      self.data['images']['original']['size']
+      data['images']['original']['size']
     end
 
     def name
-      self.data['url'].split(?/).last.sub(/\-[^-]+$/, '')
+      url.split(?/).last.sub(/\-[^-]+$/, '')
+    end
+
+    def url
+      data['url']
+    end
+
+    def gif_url
+      data['images']['original']['url']
     end
 
     def urls
-      Hash[%w[ url mp4 webp ].map {|key| [key, self.data['images']['original'][key]] }]
+      Hash[%w[ url mp4 webp ].map { |key|
+        [key, data['images']['original'][key]]
+      }]
     end
   end
 
@@ -47,14 +57,14 @@ module Giphy
     end
 
     def download!
-      return if File.exist?(self.path)
+      return if File.exist?(path)
 
-      File.write(self.path, Faraday.get(url).body, mode: ?w)
+      File.write(path, Faraday.get(url).body, mode: ?w)
     end
 
     def path
-      ext = File.extname(self.url)
-      File.join(self.dir, "#{self.id}#{ext}")
+      ext = File.extname(url)
+      File.join(dir, "#{id}#{ext}")
     end
 
     def dir
@@ -74,42 +84,48 @@ module Giphy
     end
 
     def to_s
-      '%.1f%s' % case self.size
+      '%.1f%s' % case size
                  when (0...1_000)
-                   [self.size, nil]
+                   [size, nil]
                  when (1_000...1_000_000)
-                   [self.size / 1_000.0, 'KB']
+                   [size / 1_000.0, 'KB']
                  else
-                   [self.size / 1_000_000.0, 'MB']
+                   [size / 1_000_000.0, 'MB']
                  end
     end
   end
 end
 
 if __FILE__ == $0
+  include Alphred
+  include Giphy
+
   query = ARGV.shift
 
   resp = Faraday.get('http://api.giphy.com/v1/gifs/search',
                      { q: query,
                        limit: 9,
-                       api_key: Giphy::API_KEY })
+                       api_key: API_KEY })
   data = JSON.load(resp.body)['data']
-  gifs = data.map {|gif| Giphy::Gif.new(gif) }
+  gifs = data.map {|gif| Gif.new(gif) }
 
   threads = gifs.map do |gif|
-    Thread.new do
-      gif.thumbnail.download!
-    end
+    Thread.new { gif.thumbnail.download! }
   end
-
   threads.each(&:join)
 
   items = gifs.map do |gif|
-    Alphred::Item.new(
+    Item.new(
       title: gif.name,
-      subtitle: "#{gif.id} - #{Giphy::FileSize.new(gif.size)}",
-      arg: JSON.dump(gif.urls),
+      subtitle: "#{gif.id} - #{FileSize.new(gif.size)}",
+      arg: gif.gif_url,
       icon: gif.thumbnail.path,
+      mods: {
+        alt: {
+          arg: '',
+          subtitle: '',
+        },
+      }
     )
   end
 
@@ -118,5 +134,5 @@ if __FILE__ == $0
   #   icon: 'icon.png',
   # )
 
-  puts Alphred::Items.new(*items).to_xml
+  puts Items[*items].to_json
 end
