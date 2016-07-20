@@ -1,4 +1,4 @@
-## Unreleased
+## 2.0.0 - 2016.07.20
 ### Changed
 - Don't download already downloaded thumbnails.
 
