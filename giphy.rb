@@ -35,7 +35,7 @@ module Giphy
     end
 
     def urls
-      Hash[%w[ url mp4 webp ].map {|key| [key, self.data["images"]["original"][key]] }]
+      Hash[%w[ url ].map {|key| [key, self.data["images"]["original"][key]] }]
     end
   end
 
