@@ -3,16 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.arbitrarydefinitions.giphy</string>
-	<key>category</key>
-	<string>Internet</string>
+	<string>com.arbitrarydefinitions.giphy.invious</string>
 	<key>connections</key>
 	<dict>
 		<key>0744A6DC-F5C1-4D81-8056-8C281A5494D2</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>21CA0C10-1AC1-44DA-A415-E53C081F77AE</string>
+				<string>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -20,11 +18,27 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+		</array>
+		<key>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</key>
+		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
+				<string>EFFCE3CD-865D-415D-8F0D-4D91AA98103D</string>
 				<key>modifiers</key>
-				<integer>1048576</integer>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>EFFCE3CD-865D-415D-8F0D-4D91AA98103D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4345551E-75C1-4461-A8C4-81A39F8194BC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
@@ -33,38 +47,15 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Alpha Chen</string>
+	<string>Aymon Fournier</string>
 	<key>description</key>
-	<string>Search Giphy for animated gifs</string>
+	<string>Search Giphy for animated gifs and put in on your pasteBoard</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Giphy</string>
+	<string>GiphyPaste</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>curl "{query}" --silent --output "$alfred_workflow_cache/giphy.gif" &amp;&amp; qlmanage -p "$alfred_workflow_cache/giphy.gif" &gt;&amp; /dev/null</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>21CA0C10-1AC1-44DA-A415-E53C081F77AE</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -75,7 +66,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>giphy</string>
+				<string>giphyp</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -95,7 +86,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Search Giphy</string>
+				<string>Giphy Gif 2 Clipboard</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -111,17 +102,70 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
+				<key>concurrently</key>
 				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>printf -v var "%q" "$alfred_preferences/$alfred_workflow_uid/"
+printf -v fullpath "%q" "$alfred_preferences/workflows/$alfred_workflow_uid/paste"
+eval "$fullpath {query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
+			<string>EFFCE3CD-865D-415D-8F0D-4D91AA98103D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Now paste that badboy in iMessage!</string>
+				<key>title</key>
+				<string>Giphy gif copied to clipboard!</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>4345551E-75C1-4461-A8C4-81A39F8194BC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "json"
+print JSON.load("{query}")["url"]</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -133,23 +177,30 @@
 		<key>0744A6DC-F5C1-4D81-8056-8C281A5494D2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>300</integer>
+			<key>ypos</key>
+			<real>70</real>
+		</dict>
+		<key>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>4345551E-75C1-4461-A8C4-81A39F8194BC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1190</integer>
 			<key>ypos</key>
 			<integer>130</integer>
 		</dict>
-		<key>21CA0C10-1AC1-44DA-A415-E53C081F77AE</key>
+		<key>EFFCE3CD-865D-415D-8F0D-4D91AA98103D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>530</integer>
+			<integer>670</integer>
 			<key>ypos</key>
-			<integer>60</integer>
-		</dict>
-		<key>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</key>
-		<dict>
-			<key>xpos</key>
-			<integer>530</integer>
-			<key>ypos</key>
-			<integer>210</integer>
+			<integer>130</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
