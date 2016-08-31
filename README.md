@@ -8,3 +8,9 @@ This fork uses a small swift script to download the image data and place it into
 [alfred]: https://www.alfredapp.com/
 [giphy]: http://giphy.com/
 [older]: https://github.com/kejadlen/giphy.alfredworkflow
+
+## Installation
+
+Download the latest release [here][releases].
+
+[releases]: https://github.com/invious/giphyPaste.alfredworkflow/releases
