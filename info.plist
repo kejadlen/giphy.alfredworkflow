@@ -10,6 +10,16 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>52E53778-2F5A-4C40-B9D9-9CD424F568AA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>2C624EB9-DB8E-48FA-A0E7-152BB7F7817A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -32,6 +42,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>52E53778-2F5A-4C40-B9D9-9CD424F568AA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FD7E88E3-B851-48A4-996A-D83D511B3DB7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>EFFCE3CD-865D-415D-8F0D-4D91AA98103D</key>
 		<array>
 			<dict>
@@ -45,6 +68,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>FD7E88E3-B851-48A4-996A-D83D511B3DB7</key>
+		<array/>
 	</dict>
 	<key>createdby</key>
 	<string>Aymon Fournier</string>
@@ -56,6 +81,53 @@
 	<string>GiphyPaste</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "json"
+print JSON.load("{query}")["url"]</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>52E53778-2F5A-4C40-B9D9-9CD424F568AA</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>curl "{query}" --silent --output "$alfred_workflow_cache/giphy.gif" &amp;&amp; qlmanage -p "$alfred_workflow_cache/giphy.gif" &gt;&amp; /dev/null</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FD7E88E3-B851-48A4-996A-D83D511B3DB7</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -107,8 +179,7 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>printf -v var "%q" "$alfred_preferences/$alfred_workflow_uid/"
-printf -v fullpath "%q" "$alfred_preferences/workflows/$alfred_workflow_uid/paste"
+				<string>printf -v fullpath "%q" "$alfred_preferences/workflows/$alfred_workflow_uid/paste"
 eval "$fullpath {query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
@@ -134,7 +205,7 @@ eval "$fullpath {query}"</string>
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string>Now paste that badboy in iMessage!</string>
+				<string>Now paste that badboy in iMessage!  press escape to close preview window</string>
 				<key>title</key>
 				<string>Giphy gif copied to clipboard!</string>
 			</dict>
@@ -195,12 +266,26 @@ print JSON.load("{query}")["url"]</string>
 			<key>ypos</key>
 			<integer>130</integer>
 		</dict>
+		<key>52E53778-2F5A-4C40-B9D9-9CD424F568AA</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>10</integer>
+		</dict>
 		<key>EFFCE3CD-865D-415D-8F0D-4D91AA98103D</key>
 		<dict>
 			<key>xpos</key>
 			<integer>670</integer>
 			<key>ypos</key>
-			<integer>130</integer>
+			<integer>120</integer>
+		</dict>
+		<key>FD7E88E3-B851-48A4-996A-D83D511B3DB7</key>
+		<dict>
+			<key>xpos</key>
+			<integer>670</integer>
+			<key>ypos</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
