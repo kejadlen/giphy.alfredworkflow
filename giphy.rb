@@ -89,7 +89,7 @@ if __FILE__ == $0
 
   resp = Faraday.get("http://api.giphy.com/v1/gifs/search",
                      { q: query,
-                       limit: 9,
+                       limit: 100,
                        api_key: Giphy::API_KEY })
   data = JSON.load(resp.body)["data"]
   gifs = data.map {|gif| Giphy::Gif.new(gif) }
