@@ -22,6 +22,16 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>8E42C033-455B-4903-9159-27D8D3714DD1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
@@ -121,6 +131,23 @@
 			<key>type</key>
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
+			<string>8E42C033-455B-4903-9159-27D8D3714DD1</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
 			<string>52E6556C-14D2-4D85-8BDD-4B13B2B5943D</string>
 			<key>version</key>
 			<integer>2</integer>
@@ -149,7 +176,14 @@
 			<key>xpos</key>
 			<integer>530</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>300</integer>
+		</dict>
+		<key>8E42C033-455B-4903-9159-27D8D3714DD1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>530</integer>
+			<key>ypos</key>
+			<integer>180</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
