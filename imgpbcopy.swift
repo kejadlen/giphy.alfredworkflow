@@ -3,10 +3,10 @@
 import Foundation
 import Cocoa
 
-let args = Process.arguments
+let args = CommandLine.arguments
 let path = args[1]
 let image = NSImage(contentsOfFile: path)!
-let pasteboard = NSPasteboard.generalPasteboard()
+let pasteboard = NSPasteboard.general()
 
 pasteboard.clearContents()
 pasteboard.writeObjects([image])

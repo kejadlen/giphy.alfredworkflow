@@ -1,3 +1,7 @@
+## Unreleased
+### Added
+- Copy the gif itself with cmd as the action modifier.
+
 ## 1.0.2 - 2016.07.20
 ### Changed
 - Don't download already downloaded thumbnails.
