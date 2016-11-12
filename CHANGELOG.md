@@ -1,4 +1,4 @@
-## Unreleased
+## 2.0.0 - 2016.11.11
 ### Added
 - Copy the gif itself with cmd as the action modifier.
 
