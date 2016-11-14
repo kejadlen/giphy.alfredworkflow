@@ -270,7 +270,7 @@
 			<key>config</key>
 			<dict>
 				<key>inputstring</key>
-				<string>{var:copy}</string>
+				<string>{var:giphy_copy}</string>
 				<key>matchcasesensitive</key>
 				<true/>
 				<key>matchmode</key>
@@ -348,7 +348,7 @@
 			<key>config</key>
 			<dict>
 				<key>inputstring</key>
-				<string>{var:copy}</string>
+				<string>{var:giphy_copy}</string>
 				<key>matchcasesensitive</key>
 				<true/>
 				<key>matchmode</key>

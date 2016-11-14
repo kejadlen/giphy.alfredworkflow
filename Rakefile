@@ -10,3 +10,5 @@ file imgpbcopy: 'imgpbcopy.swift' do |t|
   sh "xcrun -sdk macosx swiftc #{input} -o #{output}"
 end
 CLOBBER.include('imgpbcopy')
+
+task 'alfred:release' => :imgpbcopy

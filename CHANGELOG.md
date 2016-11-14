@@ -1,3 +1,7 @@
+## 2.0.2 - 2016.11.14
+### Changed
+- Fix gif copying
+
 ## 2.0.1 - 2016.11.14
 ### Changed
 - Fix gif previewing
