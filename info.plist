@@ -172,7 +172,7 @@
 				<string>{query}</string>
 				<key>variables</key>
 				<dict>
-					<key>copy</key>
+					<key>giphy_copy</key>
 					<string>url</string>
 				</dict>
 			</dict>
@@ -208,7 +208,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>curl "{var:url}" --silent --output "$alfred_workflow_cache/giphy.gif"</string>
+				<string>curl "$giphy_url" --silent --output "$alfred_workflow_cache/giphy.gif"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -269,24 +269,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>variables</key>
-				<dict>
-					<key>url</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>E5E17546-DD67-445C-B05F-C0062F61AAB2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>inputstring</key>
 				<string>{var:copy}</string>
 				<key>matchcasesensitive</key>
@@ -310,7 +292,25 @@
 				<string>{query}</string>
 				<key>variables</key>
 				<dict>
-					<key>copy</key>
+					<key>giphy_url</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>E5E17546-DD67-445C-B05F-C0062F61AAB2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>giphy_copy</key>
 					<string>gif</string>
 				</dict>
 			</dict>
@@ -434,7 +434,7 @@
 		<key>E5E17546-DD67-445C-B05F-C0062F61AAB2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>290</integer>
+			<integer>280</integer>
 			<key>ypos</key>
 			<integer>230</integer>
 		</dict>
