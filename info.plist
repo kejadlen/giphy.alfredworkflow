@@ -189,7 +189,7 @@
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
-				<string>{var:url}</string>
+				<string>{var:giphy_url}</string>
 				<key>transient</key>
 				<false/>
 			</dict>

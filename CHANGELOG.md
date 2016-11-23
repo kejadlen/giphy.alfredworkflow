@@ -1,3 +1,7 @@
+## Unreleased
+### Fixed
+- Giphy URL copying
+
 ## 2.0.2 - 2016.11.14
 ### Changed
 - Fix gif copying
