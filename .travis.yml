@@ -6,4 +6,4 @@ deploy:
   file: giphy.alfredworkflow
   skip_cleanup: true
   on:
-    repo: kejadlen/giphy.alfredworkflow
+    tags: true
