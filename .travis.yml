@@ -1,0 +1,9 @@
+script: bundle exec rake travis
+deploy:
+  provider: releases
+  api_key:
+    secure: nTq8vCGU9lyovq3zaKqRFbwnrhh8PJP1N5caOwlC/xOGWrQ/9LQP/OBrfaMHSt2VZv/9Pr6V74EVWKGEQfSmnVR1ENihglG9wqrCKHaUUMPBknYp5ahwBN69L8XP94erpooNaDQRKcMmmzHFf84A+exT4vp+t5tP9JiKVqOKyerT9m2ttoAJFl3eyqZy+Ey7ZnMZve3j5PgwLlgep5xPAGbAjgiEaMpZpwGp/kBA8xMsdXW2VDUfeg7m8ME++zjlCGSkcef0qY3eCs9ZLDngaSUXEbjqfqZX6x0nizjqRU2uI1PK251hfEznNTEB/9EPiViou4TSBxCkcncaFKPC5hBvA+9fSJW6EdgiOM/98e2oGVAIq1PlML8HxbvmQCbjnuV2Ht6vSrtNgsPupEQ0wgE9ltpqa14uTJS3xAI6SDgS9UeMtS9Wc/sCiqmUoi9sC2PfkFV8pjmu5Qorv+dRhoDP6X/DlBpN6orGi9Vp5nwt1GivtPz7cVy5tCNTlv8bTBLKdC9JBKmsNjzkqfyxf7HuuIvjD+o5axdgcPAFmELdDDeDPkJY9qy3xU0U5U4BwIVQxWd/1qQWMCUz0xmGmHEJuwU4eoeYeHmbye4Oi+uQ1u3yAnCOyt69r+nO1ABILXzSGT4jJWxM0eFgLk3Pg/bQJHqbGHN4RXwj0Jnldzw=
+  file: giphy.alfredworkflow
+  skip_cleanup: true
+  on:
+    repo: kejadlen/giphy.alfredworkflow
