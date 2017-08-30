@@ -1,4 +1,8 @@
 language: rust
+before_deploy:
+  - cargo build --release
+  - cp target/release/giphy-alfredworkflow workflow
+  - zip -rq giphy.alfredworkflow workflow
 deploy:
   provider: releases
   api_key:
