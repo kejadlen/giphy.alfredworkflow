@@ -1,3 +1,4 @@
+// use serde::Deserialize;
 use url::Url;
 use url_serde;
 
@@ -44,3 +45,9 @@ pub struct ThumbnailImage {
     #[serde(with = "url_serde")]
     pub url: Url,
 }
+
+// fn size_from_string<'de, D>(deserializer: D) -> Result<usize, D::Error>
+// where D: ::serde::Deserializer<'de> {
+//     let s = String::deserialize(deserializer)?;
+//     s.parse::<usize>().map_err(|e| ::serde::de::Error::custom(e))
+// }
