@@ -4,7 +4,6 @@
 extern crate error_chain;
 extern crate rayon;
 extern crate reqwest;
-extern crate serde;
 #[macro_use]
 extern crate serde_derive;
 #[macro_use]
@@ -61,17 +60,16 @@ fn run() -> Result<()> {
 
 fn search_giphy(query: &str) -> Result<giphy::SearchResponse> {
     let mut url = reqwest::Url::parse("http://api.giphy.com/v1/gifs/search")?;
-    url.query_pairs_mut().append_pair("q", &query);
-    url.query_pairs_mut().append_pair("limit", "9");
-    url.query_pairs_mut()
-        .append_pair("api_key", "dc6zaTOxFJmzC");
+    for &(k, v) in &[("q", query), ("limit", "9"), ("api_key", "dc6zaTOxFJmzC")] {
+        url.query_pairs_mut().append_pair(k, v);
+    }
     reqwest::get(url)?.json().map_err(Error::from)
 }
 
 fn temp_dir() -> Result<PathBuf> {
     let dir = env::var("alfred_workflow_cache")
         .map(|x| PathBuf::from(x.trim()))
-        .unwrap_or(env::temp_dir());
+        .unwrap_or_else(|_| env::temp_dir());
     if !dir.exists() {
         fs::create_dir(&dir)?;
     }
