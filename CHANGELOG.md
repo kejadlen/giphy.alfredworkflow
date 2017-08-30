@@ -1,3 +1,6 @@
+## [3.0.1] - 2017.08.29
+- Screwed up the last release!
+
 ## [3.0.0] - 2017.08.29
 ### Changed
 - Switched to Rust
