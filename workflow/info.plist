@@ -8,29 +8,6 @@
 	<string>Internet</string>
 	<key>connections</key>
 	<dict>
-		<key>0744A6DC-F5C1-4D81-8056-8C281A5494D2</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>8FAC08C0-7053-4555-995F-F5555FAAC4D9</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>8ECABDD4-15BD-4E30-8EA2-D114E243442E</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>21CA0C10-1AC1-44DA-A415-E53C081F77AE</key>
 		<array>
 			<dict>
@@ -82,6 +59,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>8E42C033-455B-4903-9159-27D8D3714DD1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>63178F25-7718-4704-A5A4-A092D70B1D7A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8FAC08C0-7053-4555-995F-F5555FAAC4D9</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -228,6 +218,8 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -245,24 +237,24 @@
 				<key>runningsubtext</key>
 				<string>Searching Giphy...</string>
 				<key>script</key>
-				<string>ruby giphy.rb "{query}"</string>
+				<string>./target/release/giphy-alfredworkflow</string>
 				<key>scriptargtype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>scriptfile</key>
-				<string></string>
+				<string>./target/release/giphy-alfredworkflow</string>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
 				<string>Search Giphy</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>8</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>0744A6DC-F5C1-4D81-8056-8C281A5494D2</string>
+			<string>63178F25-7718-4704-A5A4-A092D70B1D7A</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -368,13 +360,6 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>0744A6DC-F5C1-4D81-8056-8C281A5494D2</key>
-		<dict>
-			<key>xpos</key>
-			<integer>20</integer>
-			<key>ypos</key>
-			<integer>200</integer>
-		</dict>
 		<key>21CA0C10-1AC1-44DA-A415-E53C081F77AE</key>
 		<dict>
 			<key>xpos</key>
@@ -395,6 +380,13 @@
 			<integer>520</integer>
 			<key>ypos</key>
 			<integer>230</integer>
+		</dict>
+		<key>63178F25-7718-4704-A5A4-A092D70B1D7A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>20</integer>
+			<key>ypos</key>
+			<integer>200</integer>
 		</dict>
 		<key>8E42C033-455B-4903-9159-27D8D3714DD1</key>
 		<dict>
