@@ -1,2 +1,5 @@
 imgpbcopy
 vendor
+/target/
+**/*.rs.bk
+/.cache/
