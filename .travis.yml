@@ -1,4 +1,4 @@
-script: bundle exec rake travis
+language: rust
 deploy:
   provider: releases
   api_key:
