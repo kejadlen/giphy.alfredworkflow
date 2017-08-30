@@ -22,42 +22,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>41F9CF71-5C40-48C3-BC12-E4D1EA9357A8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>33F2C6FF-4F91-4586-8CB1-AA05155B9289</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>33F2C6FF-4F91-4586-8CB1-AA05155B9289</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>99B19D68-AB59-40E9-951A-8A29171D384F</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>41F9CF71-5C40-48C3-BC12-E4D1EA9357A8</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
 				<string>8E42C033-455B-4903-9159-27D8D3714DD1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -71,7 +35,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>8FAC08C0-7053-4555-995F-F5555FAAC4D9</string>
+				<string>E5E17546-DD67-445C-B05F-C0062F61AAB2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -82,32 +46,6 @@
 		</array>
 		<key>8E42C033-455B-4903-9159-27D8D3714DD1</key>
 		<array/>
-		<key>8ECABDD4-15BD-4E30-8EA2-D114E243442E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>E5E17546-DD67-445C-B05F-C0062F61AAB2</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>8FAC08C0-7053-4555-995F-F5555FAAC4D9</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>E5E17546-DD67-445C-B05F-C0062F61AAB2</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>E5E17546-DD67-445C-B05F-C0062F61AAB2</key>
 		<array>
 			<dict>
@@ -152,41 +90,6 @@
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>9B2E595D-F5A2-418B-91DD-370480080083</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>variables</key>
-				<dict>
-					<key>giphy_copy</key>
-					<string>url</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>8FAC08C0-7053-4555-995F-F5555FAAC4D9</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{var:giphy_url}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>8E42C033-455B-4903-9159-27D8D3714DD1</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -241,7 +144,7 @@
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string>./target/release/giphy-alfredworkflow</string>
+				<string>./giphy-alfredworkflow</string>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
@@ -257,25 +160,6 @@
 			<string>63178F25-7718-4704-A5A4-A092D70B1D7A</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:giphy_copy}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>url</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>41F9CF71-5C40-48C3-BC12-E4D1EA9357A8</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -298,62 +182,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>variables</key>
-				<dict>
-					<key>giphy_copy</key>
-					<string>gif</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>8ECABDD4-15BD-4E30-8EA2-D114E243442E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
+				<key>autopaste</key>
 				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./imgpbcopy "$alfred_workflow_cache/giphy.gif"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>clipboardtext</key>
+				<string>{var:giphy_url}</string>
+				<key>transient</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>99B19D68-AB59-40E9-951A-8A29171D384F</string>
+			<string>8E42C033-455B-4903-9159-27D8D3714DD1</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:giphy_copy}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>gif</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>33F2C6FF-4F91-4586-8CB1-AA05155B9289</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -367,20 +208,6 @@
 			<key>ypos</key>
 			<integer>200</integer>
 		</dict>
-		<key>33F2C6FF-4F91-4586-8CB1-AA05155B9289</key>
-		<dict>
-			<key>xpos</key>
-			<integer>520</integer>
-			<key>ypos</key>
-			<integer>350</integer>
-		</dict>
-		<key>41F9CF71-5C40-48C3-BC12-E4D1EA9357A8</key>
-		<dict>
-			<key>xpos</key>
-			<integer>520</integer>
-			<key>ypos</key>
-			<integer>230</integer>
-		</dict>
 		<key>63178F25-7718-4704-A5A4-A092D70B1D7A</key>
 		<dict>
 			<key>xpos</key>
@@ -393,40 +220,19 @@
 			<key>xpos</key>
 			<integer>590</integer>
 			<key>ypos</key>
-			<integer>200</integer>
-		</dict>
-		<key>8ECABDD4-15BD-4E30-8EA2-D114E243442E</key>
-		<dict>
-			<key>xpos</key>
-			<integer>200</integer>
-			<key>ypos</key>
 			<integer>270</integer>
-		</dict>
-		<key>8FAC08C0-7053-4555-995F-F5555FAAC4D9</key>
-		<dict>
-			<key>xpos</key>
-			<integer>200</integer>
-			<key>ypos</key>
-			<integer>190</integer>
-		</dict>
-		<key>99B19D68-AB59-40E9-951A-8A29171D384F</key>
-		<dict>
-			<key>xpos</key>
-			<integer>590</integer>
-			<key>ypos</key>
-			<integer>320</integer>
 		</dict>
 		<key>9B2E595D-F5A2-418B-91DD-370480080083</key>
 		<dict>
 			<key>xpos</key>
 			<integer>590</integer>
 			<key>ypos</key>
-			<integer>80</integer>
+			<integer>130</integer>
 		</dict>
 		<key>E5E17546-DD67-445C-B05F-C0062F61AAB2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>230</integer>
 			<key>ypos</key>
 			<integer>230</integer>
 		</dict>

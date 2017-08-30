@@ -12,61 +12,24 @@ extern crate serde_json;
 extern crate url;
 extern crate url_serde;
 
+mod alphred;
+mod errors;
+mod giphy;
+
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
 use rayon::prelude::*;
 use url::Url;
-
-mod errors {
-    error_chain! {
-        foreign_links {
-            Http(::reqwest::Error);
-            Url(::reqwest::UrlError);
-            Io(::std::io::Error);
-        }
-    }
-}
 use errors::*;
-
-mod giphy;
-
-mod alphred {
-    use std::path::PathBuf;
-
-    #[derive(Debug, Serialize)]
-    pub struct Item {
-        pub title: String,
-        pub subtitle: String,
-        pub arg: String,
-        pub icon: Icon,
-    }
-
-    #[derive(Debug, Serialize)]
-    pub struct Icon {
-        pub path: PathBuf,
-    }
-}
 
 quick_main!(run);
 
 fn run() -> Result<()> {
     let query = env::args().skip(1).collect::<Vec<_>>().join(" ");
-    let mut url = reqwest::Url::parse("http://api.giphy.com/v1/gifs/search")?;
-    url.query_pairs_mut().append_pair("q", &query);
-    url.query_pairs_mut().append_pair("limit", "9");
-    url.query_pairs_mut()
-        .append_pair("api_key", "dc6zaTOxFJmzC");
-
-    let resp: giphy::SearchResponse = reqwest::get(url)?.json()?;
+    let resp = search_giphy(&query)?;
     let gifs = resp.gifs;
-
-    let dir = env::var("alfred_workflow_cache")
-        .map(|x| PathBuf::from(x.trim()))
-        .unwrap_or(env::temp_dir());
-    if !dir.exists() {
-        fs::create_dir(&dir)?;
-    }
+    let dir = temp_dir()?;
 
     let icons: Vec<_> = gifs.par_iter()
         .map(|gif| {
@@ -83,7 +46,7 @@ fn run() -> Result<()> {
                      title: gif.slug.clone(),
                      subtitle: gif.id.clone(),
                      arg: gif.download_url().as_str().into(),
-                     icon: alphred::Icon{path: icon.clone()},
+                     icon: alphred::Icon { path: icon.clone() },
                  }
              })
         .collect();
@@ -94,6 +57,25 @@ fn run() -> Result<()> {
     println!("{}", json);
 
     Ok(())
+}
+
+fn search_giphy(query: &str) -> Result<giphy::SearchResponse> {
+    let mut url = reqwest::Url::parse("http://api.giphy.com/v1/gifs/search")?;
+    url.query_pairs_mut().append_pair("q", &query);
+    url.query_pairs_mut().append_pair("limit", "9");
+    url.query_pairs_mut()
+        .append_pair("api_key", "dc6zaTOxFJmzC");
+    reqwest::get(url)?.json().map_err(Error::from)
+}
+
+fn temp_dir() -> Result<PathBuf> {
+    let dir = env::var("alfred_workflow_cache")
+        .map(|x| PathBuf::from(x.trim()))
+        .unwrap_or(env::temp_dir());
+    if !dir.exists() {
+        fs::create_dir(&dir)?;
+    }
+    Ok(dir)
 }
 
 fn download(url: &Url, to: &Path) -> Result<()> {
