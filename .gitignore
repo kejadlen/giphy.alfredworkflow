@@ -3,3 +3,4 @@ vendor
 /target/
 **/*.rs.bk
 /.cache/
+/workflow/giphy-alfredworkflow
