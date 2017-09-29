@@ -1,3 +1,4 @@
+os: osx
 language: rust
 before_deploy:
   - cargo build --release
