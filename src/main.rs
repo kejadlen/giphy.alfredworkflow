@@ -5,6 +5,7 @@ extern crate alphred;
 extern crate error_chain;
 extern crate rayon;
 extern crate reqwest;
+extern crate serde;
 #[macro_use]
 extern crate serde_derive;
 #[macro_use]
@@ -33,25 +34,24 @@ fn run() -> Result<()> {
 
     let icons: Vec<_> = gifs.par_iter()
         .map(|gif| {
-                 let path = dir.join(format!("{}.gif", gif.id));
-                 download(gif.thumbnail_url(), &path)?;
-                 Ok(path)
-             })
+            let path = dir.join(format!("{}.gif", gif.id));
+            download(gif.thumbnail_url(), &path)?;
+            Ok(path)
+        })
         .collect::<Result<_>>()?;
 
     let items: Vec<_> = gifs.iter()
         .zip(icons.iter())
         .map(|(gif, icon)| {
-                 Item::new(gif.slug.clone())
-                     .subtitle(&gif.id)
-                     .arg(gif.download_url().as_str())
-                     .icon(icon.as_path())
-             })
+            let subtitle = format!("{} ({})", gif.id, gif.download_size());
+            Item::new(gif.slug.clone())
+                .subtitle(&subtitle)
+                .arg(gif.download_url().as_str())
+                .icon(icon.as_path())
+        })
         .collect();
 
-    let json = json!({
-                         "items": items
-                     });
+    let json = json!({ "items": items });
     println!("{}", json);
 
     Ok(())
