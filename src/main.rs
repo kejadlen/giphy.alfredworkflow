@@ -1,5 +1,6 @@
 #![recursion_limit = "1024"]
 
+extern crate alphred;
 #[macro_use]
 extern crate error_chain;
 extern crate rayon;
@@ -11,13 +12,13 @@ extern crate serde_json;
 extern crate url;
 extern crate url_serde;
 
-mod alphred;
 mod errors;
 mod giphy;
 
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
+use alphred::Item;
 use rayon::prelude::*;
 use url::Url;
 use errors::*;
@@ -41,12 +42,10 @@ fn run() -> Result<()> {
     let items: Vec<_> = gifs.iter()
         .zip(icons.iter())
         .map(|(gif, icon)| {
-                 alphred::Item {
-                     title: gif.slug.clone(),
-                     subtitle: gif.id.clone(),
-                     arg: gif.download_url().as_str().into(),
-                     icon: alphred::Icon { path: icon.clone() },
-                 }
+                 Item::new(gif.slug.clone())
+                     .subtitle(&gif.id)
+                     .arg(gif.download_url().as_str())
+                     .icon(icon.as_path())
              })
         .collect();
 
