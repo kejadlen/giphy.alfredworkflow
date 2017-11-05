@@ -1,4 +1,3 @@
-imgpbcopy
 vendor
 /target/
 **/*.rs.bk
