@@ -1,5 +1,7 @@
 os: osx
 language: rust
+rust:
+  - nightly
 before_deploy:
   - cargo build --release
   - cp target/release/giphy-alfredworkflow workflow
