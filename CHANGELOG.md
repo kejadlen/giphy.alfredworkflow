@@ -1,3 +1,6 @@
+## [3.1.1] - 2017.08.29
+- Don't require Swift to be installed
+
 ## [3.1.0] - 2017.08.29
 - New feature: direct copying of GIFs!
 
