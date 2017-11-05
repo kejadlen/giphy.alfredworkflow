@@ -1,3 +1,6 @@
+## [3.0.7] - 2017.08.29
+- New feature: direct copying of GIFs!
+
 ## [3.0.1] - 2017.08.29
 - Screwed up the last release!
 

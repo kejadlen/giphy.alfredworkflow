@@ -1,6 +1,6 @@
 [root]
 name = "giphy-alfredworkflow"
-version = "3.0.4"
+version = "3.0.7"
 dependencies = [
  "alphred 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "error-chain 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
