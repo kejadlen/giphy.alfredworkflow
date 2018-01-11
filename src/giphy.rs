@@ -22,7 +22,7 @@ impl Gif {
             size if (0.0..=1_000.0).contains(size) => (size, "KB"),
             size => (size / 1_000_000.0, "MB"),
         };
-        format!("{:.1}{}", size, suffix).into()
+        format!("{:.1}{}", size, suffix)
     }
 
     pub fn download_url(&self) -> &Url {
