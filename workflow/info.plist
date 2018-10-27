@@ -348,7 +348,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>imgpbcopy "$alfred_workflow_cache/giphy.gif"</string>
+				<string>osascript -e  "set the clipboard to (read (POSIX file \"$alfred_workflow_cache/giphy.gif\") as JPEG picture)"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
