@@ -1,4 +1,4 @@
-#![feature(inclusive_range_syntax, range_contains)]
+#![feature(range_contains)]
 #![recursion_limit = "1024"]
 
 extern crate alphred;

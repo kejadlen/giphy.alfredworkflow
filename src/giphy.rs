@@ -20,8 +20,8 @@ pub struct Gif {
 impl Gif {
     pub fn download_size(&self) -> String {
         let (size, suffix) = match self.images.original.size as f64 {
-            size if (0.0..=1_000.0).contains(size) => (size, ""),
-            size if (0.0..=1_000.0).contains(size) => (size, "KB"),
+            size if (0.0..=1_000.0).contains(&size) => (size, ""),
+            size if (0.0..=1_000.0).contains(&size) => (size, "KB"),
             size => (size / 1_000_000.0, "MB"),
         };
         format!("{:.1}{}", size, suffix)
