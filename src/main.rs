@@ -17,13 +17,13 @@ extern crate url_serde;
 mod errors;
 mod giphy;
 
+use alphred::Item;
+use errors::*;
+use rayon::prelude::*;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
-use alphred::Item;
-use rayon::prelude::*;
 use url::Url;
-use errors::*;
 
 quick_main!(run);
 
@@ -33,7 +33,8 @@ fn run() -> Result<()> {
     let gifs = resp.gifs;
     let dir = temp_dir()?;
 
-    let icons: Vec<_> = gifs.par_iter()
+    let icons: Vec<_> = gifs
+        .par_iter()
         .map(|gif| {
             let path = dir.join(format!("{}.gif", gif.id));
             download(gif.thumbnail_url(), &path)?;
@@ -41,7 +42,8 @@ fn run() -> Result<()> {
         })
         .collect::<Result<_>>()?;
 
-    let items: Vec<_> = gifs.iter()
+    let items: Vec<_> = gifs
+        .iter()
         .zip(icons.iter())
         .map(|(gif, icon)| {
             let subtitle = format!("{} ({})", gif.id, gif.download_size());

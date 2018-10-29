@@ -4,14 +4,16 @@ use url_serde;
 
 #[derive(Debug, Deserialize)]
 pub struct SearchResponse {
-    #[serde(rename = "data")] pub gifs: Vec<Gif>,
+    #[serde(rename = "data")]
+    pub gifs: Vec<Gif>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Gif {
     pub id: String,
     pub slug: String,
-    #[serde(with = "url_serde")] pub url: Url,
+    #[serde(with = "url_serde")]
+    pub url: Url,
     images: Images,
 }
 
@@ -37,18 +39,22 @@ impl Gif {
 #[derive(Debug, Deserialize)]
 pub struct Images {
     pub original: OriginalImage,
-    #[serde(rename = "fixed_width_small_still")] pub thumbnail: ThumbnailImage,
+    #[serde(rename = "fixed_width_small_still")]
+    pub thumbnail: ThumbnailImage,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct OriginalImage {
-    #[serde(deserialize_with = "size_from_string")] pub size: usize,
-    #[serde(with = "url_serde")] pub url: Url,
+    #[serde(deserialize_with = "size_from_string")]
+    pub size: usize,
+    #[serde(with = "url_serde")]
+    pub url: Url,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct ThumbnailImage {
-    #[serde(with = "url_serde")] pub url: Url,
+    #[serde(with = "url_serde")]
+    pub url: Url,
 }
 
 fn size_from_string<'de, D>(deserializer: D) -> Result<usize, D::Error>
