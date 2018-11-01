@@ -18,7 +18,7 @@ mod errors;
 mod giphy;
 
 use alphred::Item;
-use errors::*;
+use crate::errors::*;
 use rayon::prelude::*;
 use std::env;
 use std::fs;
