@@ -1,6 +1,6 @@
 # Giphy.alfredworkflow
 
-![Animated Giphy Logo, Courtest of Giphy](README.gif)
+![Animated Giphy Logo, Courtesy of Giphy](README.gif)
 
 A workflow for [Alfred][alfred] that searches [Giphy][giphy] for animated gifs.
 Actioning on a search item will preview the gif using Quick Look and copy the
