@@ -61,7 +61,7 @@ fn run() -> Result<()> {
 }
 
 fn search_giphy(query: &str) -> Result<giphy::SearchResponse> {
-    let mut url = reqwest::Url::parse("http://api.giphy.com/v1/gifs/search")?;
+    let mut url = reqwest::Url::parse("https://api.giphy.com/v1/gifs/search")?;
     for &(k, v) in &[("q", query), ("limit", "9"), ("api_key", "dc6zaTOxFJmzC")] {
         url.query_pairs_mut().append_pair(k, v);
     }
