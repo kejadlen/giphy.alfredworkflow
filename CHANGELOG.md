@@ -1,3 +1,6 @@
+## [3.2.0] - 2019.01.23
+- Fix Giphy API usage by switching to https
+
 ## [3.1.1] - 2017.08.29
 - Don't require Swift to be installed
 
