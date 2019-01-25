@@ -17,7 +17,7 @@ Download the latest release [here][releases].
 
 ## TODO
 
-- Get a production Giphy API key?
-- Copy the link to the Giphy page (instead of the gif) with a keyboard
+- [ ] Get a production Giphy API key
+- [ ] Copy the link to the Giphy page (instead of the gif) with a keyboard
   modifier.
-- Figure out how to use the mp4 for Quick Look instead of the gif.
+- [ ] Figure out how to use the mp4 for Quick Look instead of the gif.
