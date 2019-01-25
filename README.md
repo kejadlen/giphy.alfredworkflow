@@ -15,9 +15,12 @@ Download the latest release [here][releases].
 
 [releases]: https://github.com/kejadlen/giphy.alfredworkflow/releases
 
-## TODO
+## To-do
 
 - [ ] Get a production Giphy API key
-- [ ] Copy the link to the Giphy page (instead of the gif) with a keyboard
-  modifier.
-- [ ] Figure out how to use the mp4 for Quick Look instead of the gif.
+- [ ] Copy page URL of Gif with a keyboard modifier and not .gif
+- [ ] Have Quick Look use .mp4 and not .gif
+
+## Contribute
+
+Please do contribute! Issues and pull requests are welcome.
