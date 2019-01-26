@@ -15,7 +15,7 @@ Download the latest release [here][releases].
 
 [releases]: https://github.com/kejadlen/giphy.alfredworkflow/releases
 
-## To-do
+## TODO
 
 - [ ] Get a production Giphy API key
 - [ ] Copy page URL of Gif with a keyboard modifier and not .gif
