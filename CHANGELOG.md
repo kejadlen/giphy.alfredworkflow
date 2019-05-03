@@ -1,3 +1,6 @@
+## [3.2.1] - 2019.05.02
+- Update Giphy API key
+
 ## [3.2.0] - 2019.01.23
 - Fix Giphy API usage by switching to https
 
