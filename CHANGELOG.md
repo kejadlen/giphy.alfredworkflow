@@ -1,3 +1,6 @@
+## [Unreleased]
+- Don't show the preview on copying the actual GIF
+
 ## [3.2.1] - 2019.05.02
 - Update Giphy API key
 

@@ -120,18 +120,7 @@
 			</dict>
 		</array>
 		<key>9DBB8987-1232-4D3C-B815-8BC5E123EB75</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>9B2E595D-F5A2-418B-91DD-370480080083</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>E5E17546-DD67-445C-B05F-C0062F61AAB2</key>
 		<array>
 			<dict>
@@ -189,7 +178,7 @@
 			<key>uid</key>
 			<string>8E42C033-455B-4903-9159-27D8D3714DD1</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -244,6 +233,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -282,7 +273,7 @@
 			<key>uid</key>
 			<string>63178F25-7718-4704-A5A4-A092D70B1D7A</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
