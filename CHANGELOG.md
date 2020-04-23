@@ -1,5 +1,6 @@
-## [Unreleased]
+## [3.2.2] - 2020.04.22
 - Don't show the preview on copying the actual GIF
+- Set the number of gifs using `LIMIT`
 
 ## [3.2.1] - 2019.05.02
 - Update Giphy API key
