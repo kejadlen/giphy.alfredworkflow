@@ -449,6 +449,11 @@
 			<integer>230</integer>
 		</dict>
 	</dict>
+	<key>variables</key>
+	<dict>
+		<key>LIMIT</key>
+		<string>9</string>
+	</dict>
 	<key>version</key>
 	<string>3.2.1</string>
 	<key>webaddress</key>

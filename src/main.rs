@@ -16,8 +16,8 @@ extern crate url_serde;
 mod errors;
 mod giphy;
 
-use alphred::Item;
 use crate::errors::*;
+use alphred::Item;
 use rayon::prelude::*;
 use std::env;
 use std::fs;
@@ -28,7 +28,11 @@ quick_main!(run);
 
 fn run() -> Result<()> {
     let query = env::args().skip(1).collect::<Vec<_>>().join(" ");
-    let resp = search_giphy(&query)?;
+    let limit = env::var("LIMIT")
+        .ok()
+        .and_then(|x| x.parse::<usize>().ok())
+        .unwrap_or_else(|| 9);
+    let resp = search_giphy(&query, limit)?;
     let gifs = resp.gifs;
     let dir = temp_dir()?;
 
@@ -59,9 +63,13 @@ fn run() -> Result<()> {
     Ok(())
 }
 
-fn search_giphy(query: &str) -> Result<giphy::SearchResponse> {
+fn search_giphy(query: &str, limit: usize) -> Result<giphy::SearchResponse> {
     let mut url = reqwest::Url::parse("https://api.giphy.com/v1/gifs/search")?;
-    for &(k, v) in &[("q", query), ("limit", "9"), ("api_key", "mHT38alQ1MfE5gM6WL4OUfhox33NbXti")] {
+    for &(k, v) in &[
+        ("q", query),
+        ("limit", &limit.to_string()),
+        ("api_key", "mHT38alQ1MfE5gM6WL4OUfhox33NbXti"),
+    ] {
         url.query_pairs_mut().append_pair(k, v);
     }
     reqwest::get(url)?.json().map_err(Error::from)
