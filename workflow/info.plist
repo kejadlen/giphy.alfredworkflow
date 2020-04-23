@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.arbitrarydefinitions.giphy</string>
+	<string>dev.kejadlen.giphy</string>
 	<key>category</key>
 	<string>Internet</string>
 	<key>connections</key>

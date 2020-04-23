@@ -1,0 +1,48 @@
+on:
+  push:
+    tags:
+      - v*
+
+name: create-release
+
+jobs:
+  build:
+    name: Create release
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      - name: Build project
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release
+
+      - name: Create workflow
+        run: |
+          cp target/release/giphy-alfredworkflow workflow
+          zip -rqj giphy.alfredworkflow workflow/*
+
+      - name: Create release
+        id: create-release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: |
+            # ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload workflow
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: ./giphy.alfredworkflow
+          asset_name: giphy.alfredworkflow
+          asset_content_type: application/zip
