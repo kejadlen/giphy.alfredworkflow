@@ -15,6 +15,14 @@ Download the latest release [here][releases].
 
 [releases]: https://github.com/kejadlen/giphy.alfredworkflow/releases
 
+## Usage
+
+1. Initiate Alfred
+2. Type `giphy` then search parameter, i.e. `giphy batman`
+3. When you get a list of results in Alfred, use the arrow keys to highlight the gif you want
+4. * To copy the gif URL to the clipboard: Press <kbd>Enter<kbd>
+    * To copy the gif to the clipboard: Press <kbd>Cmd</kbd> + <kbd>Enter</kbd>
+
 ## TODO
 
 - [ ] Get a production Giphy API key
