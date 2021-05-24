@@ -107,18 +107,7 @@
 			</dict>
 		</array>
 		<key>8E42C033-455B-4903-9159-27D8D3714DD1</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>9B2E595D-F5A2-418B-91DD-370480080083</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>9DBB8987-1232-4D3C-B815-8BC5E123EB75</key>
 		<array/>
 		<key>E5E17546-DD67-445C-B05F-C0062F61AAB2</key>
@@ -150,6 +139,8 @@
 			<dict>
 				<key>argument</key>
 				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict>
 					<key>copy</key>
@@ -170,6 +161,8 @@
 				<false/>
 				<key>clipboardtext</key>
 				<string>{var:giphy_url}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -300,6 +293,8 @@
 				<key>argument</key>
 				<string>{query}
 </string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict>
 					<key>giphy_url</key>
@@ -318,6 +313,8 @@
 			<dict>
 				<key>argument</key>
 				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict>
 					<key>copy</key>
