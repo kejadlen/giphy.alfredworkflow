@@ -1,4 +1,4 @@
-## Unreleased
+## [4.0.0] - 2020.05.23
 - Remove quicklook since Alfred has it built-in #26
 
 ## [3.2.2] - 2020.04.22
