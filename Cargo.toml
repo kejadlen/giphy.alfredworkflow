@@ -1,7 +1,7 @@
 [package]
 name = "giphy-alfredworkflow"
 version = "4.0.0"
-authors = ["Alpha Chen <alpha.chen@gmail.com>"]
+authors = ["Alpha Chen <alpha@kejadlen.dev>"]
 edition = "2018"
 
 [dependencies]
