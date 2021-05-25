@@ -7,11 +7,8 @@ extern crate rayon;
 extern crate reqwest;
 extern crate serde;
 #[macro_use]
-extern crate serde_derive;
-#[macro_use]
 extern crate serde_json;
 extern crate url;
-extern crate url_serde;
 
 mod errors;
 mod giphy;
@@ -31,7 +28,7 @@ fn run() -> Result<()> {
     let limit = env::var("LIMIT")
         .ok()
         .and_then(|x| x.parse::<usize>().ok())
-        .unwrap_or_else(|| 9);
+        .unwrap_or(9);
     let resp = search_giphy(&query, limit)?;
     let gifs = resp.gifs;
     let dir = temp_dir()?;
@@ -72,7 +69,7 @@ fn search_giphy(query: &str, limit: usize) -> Result<giphy::SearchResponse> {
     ] {
         url.query_pairs_mut().append_pair(k, v);
     }
-    reqwest::get(url)?.json().map_err(Error::from)
+    reqwest::blocking::get(url)?.json().map_err(Error::from)
 }
 
 fn temp_dir() -> Result<PathBuf> {
@@ -86,7 +83,7 @@ fn temp_dir() -> Result<PathBuf> {
 }
 
 fn download(url: &Url, to: &Path) -> Result<()> {
-    let mut res = reqwest::get(url.clone())?;
+    let mut res = reqwest::blocking::get(url.clone())?;
     let mut file = fs::File::create(to)?;
     std::io::copy(&mut res, &mut file)?;
     Ok(())

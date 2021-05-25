@@ -11,7 +11,6 @@ pub struct SearchResponse {
 pub struct Gif {
     pub id: String,
     pub slug: String,
-    #[serde(with = "url_serde")]
     pub url: Url,
     images: Images,
 }
@@ -46,13 +45,11 @@ pub struct Images {
 pub struct OriginalImage {
     #[serde(deserialize_with = "size_from_string")]
     pub size: usize,
-    #[serde(with = "url_serde")]
     pub url: Url,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct ThumbnailImage {
-    #[serde(with = "url_serde")]
     pub url: Url,
 }
 
