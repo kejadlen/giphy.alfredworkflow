@@ -274,7 +274,7 @@ checksum = "0e4075386626662786ddb0ec9081e7c7eeb1ba31951f447ca780ef9f5d568189"
 
 [[package]]
 name = "giphy-alfredworkflow"
-version = "4.0.0"
+version = "4.0.1"
 dependencies = [
  "alphred",
  "error-chain",
