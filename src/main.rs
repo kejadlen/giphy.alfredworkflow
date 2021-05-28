@@ -13,12 +13,13 @@ extern crate url;
 mod errors;
 mod giphy;
 
-use crate::errors::*;
-use alphred::Item;
-use rayon::prelude::*;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
+
+use crate::errors::*;
+use alphred::Item;
+use rayon::prelude::*;
 use url::Url;
 
 quick_main!(run);
@@ -28,7 +29,10 @@ fn run() -> Result<()> {
     let limit = env::var("LIMIT")
         .ok()
         .and_then(|x| x.parse::<usize>().ok())
-        .unwrap_or(9);
+        .unwrap_or(8);
+    let browser = env::var("BROWSER")
+        .ok()
+        .unwrap_or("true".into());
     let resp = search_giphy(&query, limit)?;
     let gifs = resp.gifs;
     let dir = temp_dir()?;
@@ -42,7 +46,7 @@ fn run() -> Result<()> {
         })
         .collect::<Result<_>>()?;
 
-    let items: Vec<_> = gifs
+    let mut items: Vec<_> = gifs
         .iter()
         .zip(icons.iter())
         .map(|(gif, icon)| {
@@ -51,8 +55,17 @@ fn run() -> Result<()> {
                 .subtitle(&subtitle)
                 .arg(gif.download_url().as_str())
                 .icon(icon.as_path())
+                .variables(&[("action", "gif")])
         })
         .collect();
+
+    if browser == "true" {
+        items.push(
+            Item::new(format!("Search for \"{}\" in browser", query))
+                .arg(&format!("https://giphy.com/search/{}", query))
+                .variables(&[("action", "browser")]),
+        );
+    }
 
     let json = json!({ "items": items });
     println!("{}", json);

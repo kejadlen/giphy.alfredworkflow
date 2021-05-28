@@ -1,6 +1,6 @@
 [package]
 name = "giphy-alfredworkflow"
-version = "4.0.1"
+version = "4.0.2"
 authors = ["Alpha Chen <alpha@kejadlen.dev>"]
 edition = "2018"
 

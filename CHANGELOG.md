@@ -1,3 +1,6 @@
+## [4.0.2] - 2020.05.23
+- Add an option to open the Giphy search in the browser #25
+
 ## [4.0.1] - 2020.05.23
 - Remove quicklook since Alfred has it built-in #26
 
