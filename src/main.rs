@@ -13,6 +13,7 @@ extern crate url;
 mod errors;
 mod giphy;
 
+use std::collections::HashMap;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -55,7 +56,7 @@ fn run() -> Result<()> {
                 .subtitle(&subtitle)
                 .arg(gif.download_url().as_str())
                 .icon(icon.as_path())
-                .variables(&[("action", "gif")])
+                .variables(action("gif"))
         })
         .collect();
 
@@ -63,7 +64,7 @@ fn run() -> Result<()> {
         items.push(
             Item::new(format!("Search for \"{}\" in browser", query))
                 .arg(&format!("https://giphy.com/search/{}", query))
-                .variables(&[("action", "browser")]),
+                .variables(action("browser")),
         );
     }
 
@@ -100,4 +101,10 @@ fn download(url: &Url, to: &Path) -> Result<()> {
     let mut file = fs::File::create(to)?;
     std::io::copy(&mut res, &mut file)?;
     Ok(())
+}
+
+fn action(value: &str) -> HashMap<String, String> {
+    let mut map = HashMap::new();
+    map.insert("action".into(), value.into());
+    map
 }
