@@ -1,25 +1,21 @@
+name: Release
+
 on:
   push:
     tags:
       - v*
 
-name: create-release
-
 jobs:
-  build:
-    name: Create release
+  release:
     runs-on: macos-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@master
+      - uses: actions/checkout@v3
 
-      - name: Build project
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release
+      - name: Build release
+        run: cargo build --release --verbose
 
-      - name: Create workflow
+      - name: Package release
         run: |
           cp target/release/giphy-alfredworkflow workflow
           zip -rqj giphy.alfredworkflow workflow/*
