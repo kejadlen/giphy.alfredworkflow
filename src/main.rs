@@ -1,9 +1,5 @@
 #![recursion_limit = "1024"]
 
-#[macro_use]
-extern crate error_chain;
-
-mod errors;
 mod giphy;
 
 use std::collections::HashMap;
@@ -11,21 +7,24 @@ use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use crate::errors::*;
-use alphred::Item;
+use alphred::{Item, Workflow};
+use anyhow::{anyhow, Result};
 use rayon::prelude::*;
-use serde_json::json;
 use url::Url;
 
-quick_main!(run);
+fn main() {
+    let workflow = Workflow::new(run);
+    println!("{}", workflow);
+}
 
-fn run() -> Result<()> {
+fn run() -> Result<Vec<Item>> {
     let query = env::args().skip(1).collect::<Vec<_>>().join(" ");
     let limit = env::var("LIMIT")
         .ok()
         .and_then(|x| x.parse::<usize>().ok())
         .unwrap_or(8);
     let browser = env::var("BROWSER").ok().unwrap_or_else(|| "true".into());
+
     let resp = search_giphy(&query, limit)?;
     let gifs = resp.gifs;
     let dir = temp_dir()?;
@@ -67,10 +66,7 @@ fn run() -> Result<()> {
         );
     }
 
-    let json = json!({ "items": items });
-    println!("{}", json);
-
-    Ok(())
+    Ok(items)
 }
 
 fn search_giphy(query: &str, limit: usize) -> Result<giphy::SearchResponse> {
@@ -82,7 +78,9 @@ fn search_giphy(query: &str, limit: usize) -> Result<giphy::SearchResponse> {
     ] {
         url.query_pairs_mut().append_pair(k, v);
     }
-    reqwest::blocking::get(url)?.json().map_err(Error::from)
+    reqwest::blocking::get(url)?
+        .json()
+        .map_err(|e| anyhow!("{}", e))
 }
 
 fn temp_dir() -> Result<PathBuf> {
