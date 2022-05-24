@@ -1,14 +1,7 @@
 #![recursion_limit = "1024"]
 
-extern crate alphred;
 #[macro_use]
 extern crate error_chain;
-extern crate rayon;
-extern crate reqwest;
-extern crate serde;
-#[macro_use]
-extern crate serde_json;
-extern crate url;
 
 mod errors;
 mod giphy;
@@ -21,6 +14,7 @@ use std::path::{Path, PathBuf};
 use crate::errors::*;
 use alphred::Item;
 use rayon::prelude::*;
+use serde_json::json;
 use url::Url;
 
 quick_main!(run);
