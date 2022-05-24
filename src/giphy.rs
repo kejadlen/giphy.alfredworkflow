@@ -12,7 +12,7 @@ pub struct Gif {
     pub id: String,
     pub slug: String,
     pub url: Url,
-    images: Images,
+    pub images: Images,
 }
 
 impl Gif {
@@ -29,8 +29,11 @@ impl Gif {
         &self.images.original.url
     }
 
-    pub fn thumbnail_url(&self) -> &Url {
-        &self.images.thumbnail.url
+    pub fn thumbnail(&self) -> Option<&ThumbnailImage> {
+        match &self.images.thumbnail {
+            Image::Empty {} => None,
+            Image::Image(thumbnail) => Some(thumbnail),
+        }
     }
 }
 
@@ -38,7 +41,7 @@ impl Gif {
 pub struct Images {
     pub original: OriginalImage,
     #[serde(rename = "fixed_width_small_still")]
-    pub thumbnail: ThumbnailImage,
+    pub thumbnail: Image<ThumbnailImage>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -51,6 +54,13 @@ pub struct OriginalImage {
 #[derive(Debug, Deserialize)]
 pub struct ThumbnailImage {
     pub url: Url,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(untagged)]
+pub enum Image<T> {
+    Image(T),
+    Empty {},
 }
 
 fn size_from_string<'de, D>(deserializer: D) -> Result<usize, D::Error>

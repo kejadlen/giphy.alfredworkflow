@@ -31,9 +31,7 @@ fn run() -> Result<()> {
         .ok()
         .and_then(|x| x.parse::<usize>().ok())
         .unwrap_or(8);
-    let browser = env::var("BROWSER")
-        .ok()
-        .unwrap_or("true".into());
+    let browser = env::var("BROWSER").ok().unwrap_or_else(|| "true".into());
     let resp = search_giphy(&query, limit)?;
     let gifs = resp.gifs;
     let dir = temp_dir()?;
@@ -41,8 +39,15 @@ fn run() -> Result<()> {
     let icons: Vec<_> = gifs
         .par_iter()
         .map(|gif| {
+            // Some images don't have fixed_width_small_still, so
+            // just download the original image if that's the case
+            let url = gif
+                .thumbnail()
+                .map(|t| &t.url)
+                .unwrap_or_else(|| &gif.images.original.url);
+
             let path = dir.join(format!("{}.gif", gif.id));
-            download(gif.thumbnail_url(), &path)?;
+            download(url, &path)?;
             Ok(path)
         })
         .collect::<Result<_>>()?;
