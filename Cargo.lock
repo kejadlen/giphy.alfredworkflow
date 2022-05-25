@@ -227,7 +227,7 @@ dependencies = [
 
 [[package]]
 name = "giphy-alfredworkflow"
-version = "4.0.2"
+version = "4.0.4"
 dependencies = [
  "alphred",
  "anyhow",
