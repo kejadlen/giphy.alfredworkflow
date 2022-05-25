@@ -1,3 +1,9 @@
+## [4.0.4] - 2022.05.25
+- Fix version number in Alfred #31
+
+## [4.0.3] - 2022.05.24
+- Fix for when Giphy doesn't return a thumbnail rendition #30
+
 ## [4.0.2] - 2020.05.23
 - Add an option to open the Giphy search in the browser #25
 
