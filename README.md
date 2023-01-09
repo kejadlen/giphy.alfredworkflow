@@ -23,6 +23,7 @@ Download the latest release [here][releases].
 4. * To show the gif in Quick Look: Press <kbd>Shift</kbd>
    * To copy the gif URL to the clipboard: Press <kbd>Enter</kbd>
    * To copy the gif to the clipboard: Press <kbd>Cmd</kbd> + <kbd>Enter</kbd>
+     * Note: known bugs, see [issue #2](https://github.com/kejadlen/giphy.alfredworkflow/issues/2)
 
 ## TODO
 
