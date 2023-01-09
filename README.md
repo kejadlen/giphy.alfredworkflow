@@ -20,7 +20,8 @@ Download the latest release [here][releases].
 1. Initiate Alfred
 2. Type `giphy` then search parameter, i.e. `giphy batman`
 3. When you get a list of results in Alfred, use the arrow keys to highlight the gif you want
-4. * To copy the gif URL to the clipboard: Press <kbd>Enter</kbd>
+4. * To show the gif in Quick Look: Press <kbd>Shift</kbd>
+   * To copy the gif URL to the clipboard: Press <kbd>Enter</kbd>
    * To copy the gif to the clipboard: Press <kbd>Cmd</kbd> + <kbd>Enter</kbd>
 
 ## TODO
