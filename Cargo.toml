@@ -2,7 +2,7 @@
 name = "giphy-alfredworkflow"
 version = "4.0.4"
 authors = ["Alpha Chen <alpha@kejadlen.dev>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 alphred = "0.1"
