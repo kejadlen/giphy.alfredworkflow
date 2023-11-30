@@ -5,10 +5,10 @@ authors = ["Alpha Chen <alpha@kejadlen.dev>"]
 edition = "2021"
 
 [dependencies]
-alphred = "0.1"
-anyhow = "1.0"
-rayon = "1.8"
-reqwest = { version = "0.11", features = ["blocking", "json"] }
-serde = { version = "1.0", features = ["derive"] }
-tokio = { version = "1", features = ["full"] }
-url = { version = "2.5", features = ["serde"] }
+alphred = "*"
+anyhow = "*"
+rayon = "*"
+reqwest = { version = "*", features = ["blocking", "json"] }
+serde = { version = "*", features = ["derive"] }
+tokio = { version = "*", features = ["full"] }
+url = { version = "*", features = ["serde"] }
