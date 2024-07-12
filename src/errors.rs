@@ -2,7 +2,7 @@
 error_chain! {
     foreign_links {
         Http(::reqwest::Error);
-        Url(::reqwest::UrlError);
+        //Url(::url::ParseError);
         Io(::std::io::Error);
     }
 }

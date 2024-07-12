@@ -1,28 +1,20 @@
 #![recursion_limit = "1024"]
 
-extern crate alphred;
 #[macro_use]
 extern crate error_chain;
-extern crate rayon;
-extern crate reqwest;
-extern crate serde;
-#[macro_use]
-extern crate serde_derive;
-#[macro_use]
-extern crate serde_json;
-extern crate url;
-extern crate url_serde;
 
-mod errors;
-mod giphy;
-
-use crate::errors::*;
 use alphred::Item;
+use error_chain::quick_main;
+use errors::*;
 use rayon::prelude::*;
+use reqwest::IntoUrl;
+use serde_json::json;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
-use url::Url;
+
+mod errors;
+mod giphy;
 
 quick_main!(run);
 
@@ -31,7 +23,7 @@ fn run() -> Result<()> {
     let limit = env::var("LIMIT")
         .ok()
         .and_then(|x| x.parse::<usize>().ok())
-        .unwrap_or_else(|| 9);
+        .unwrap_or(9);
     let resp = search_giphy(&query, limit)?;
     let gifs = resp.gifs;
     let dir = temp_dir()?;
@@ -40,7 +32,7 @@ fn run() -> Result<()> {
         .par_iter()
         .map(|gif| {
             let path = dir.join(format!("{}.gif", gif.id));
-            download(gif.thumbnail_url(), &path)?;
+            download(gif.thumbnail_url().to_string(), &path)?;
             Ok(path)
         })
         .collect::<Result<_>>()?;
@@ -64,15 +56,16 @@ fn run() -> Result<()> {
 }
 
 fn search_giphy(query: &str, limit: usize) -> Result<giphy::SearchResponse> {
-    let mut url = reqwest::Url::parse("https://api.giphy.com/v1/gifs/search")?;
-    for &(k, v) in &[
-        ("q", query),
-        ("limit", &limit.to_string()),
-        ("api_key", "mHT38alQ1MfE5gM6WL4OUfhox33NbXti"),
-    ] {
-        url.query_pairs_mut().append_pair(k, v);
-    }
-    reqwest::get(url)?.json().map_err(Error::from)
+    let url = reqwest::Url::parse_with_params(
+        "https://api.giphy.com/v1/gifs/search",
+        &[
+            ("q", query),
+            ("limit", &limit.to_string()),
+            ("api_key", "mHT38alQ1MfE5gM6WL4OUfhox33NbXti"),
+        ],
+    )
+    .chain_err(|| "couldn't construct url")?;
+    reqwest::blocking::get(url)?.json().map_err(Error::from)
 }
 
 fn temp_dir() -> Result<PathBuf> {
@@ -85,8 +78,8 @@ fn temp_dir() -> Result<PathBuf> {
     Ok(dir)
 }
 
-fn download(url: &Url, to: &Path) -> Result<()> {
-    let mut res = reqwest::get(url.clone())?;
+fn download<T: IntoUrl>(url: T, to: &Path) -> Result<()> {
+    let mut res = reqwest::blocking::get(url)?;
     let mut file = fs::File::create(to)?;
     std::io::copy(&mut res, &mut file)?;
     Ok(())

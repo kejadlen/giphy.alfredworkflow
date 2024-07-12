@@ -1,6 +1,5 @@
 use serde::Deserialize;
 use url::Url;
-use url_serde;
 
 #[derive(Debug, Deserialize)]
 pub struct SearchResponse {
