@@ -11,7 +11,7 @@ pub struct SearchResponse {
 pub struct Gif {
     pub id: String,
     pub slug: String,
-    pub url: Url,
+    // pub url: Url,
     pub images: Images,
 }
 
