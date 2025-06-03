@@ -71,7 +71,20 @@
 				<false/>
 			</dict>
 		</array>
-		<key>63178F25-7718-4704-A5A4-A092D70B1D7A</key>
+		<key>65A7F2ED-1545-4335-A9C8-1DD24D393F51</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6EA7A116-91FB-4255-B91B-4E4637002FEF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6EA7A116-91FB-4255-B91B-4E4637002FEF</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -89,7 +102,7 @@
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
-				<string>Copy GIF</string>
+				<string></string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -178,6 +191,60 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>columncount</key>
+				<integer>3</integer>
+				<key>filterable</key>
+				<true/>
+				<key>fixedorder</key>
+				<false/>
+				<key>imageaspect</key>
+				<integer>0</integer>
+				<key>inputfile</key>
+				<string>./giphy-alfredworkflow</string>
+				<key>inputtype</key>
+				<integer>1</integer>
+				<key>loadingtext</key>
+				<string></string>
+				<key>showsubtitles</key>
+				<true/>
+				<key>showtitles</key>
+				<true/>
+				<key>subtitlesinfooter</key>
+				<false/>
+				<key>titlesinfooter</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.userinterface.grid</string>
+			<key>uid</key>
+			<string>6EA7A116-91FB-4255-B91B-4E4637002FEF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>giphy</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Search Giphy</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>65A7F2ED-1545-4335-A9C8-1DD24D393F51</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
@@ -193,29 +260,6 @@
 			<string>8E42C033-455B-4903-9159-27D8D3714DD1</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<true/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>qlmanage -p "$alfred_workflow_cache/giphy.gif" &gt;&amp; /dev/null</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>9B2E595D-F5A2-418B-91DD-370480080083</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -276,6 +320,8 @@
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
+				<key>hideelse</key>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.conditional</string>
@@ -350,55 +396,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>giphy</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>1</integer>
-				<key>queuemode</key>
-				<integer>2</integer>
-				<key>runningsubtext</key>
-				<string>Searching Giphy...</string>
-				<key>script</key>
-				<string>./target/release/giphy-alfredworkflow</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string>./giphy-alfredworkflow</string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Search Giphy</string>
-				<key>type</key>
-				<integer>8</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>63178F25-7718-4704-A5A4-A092D70B1D7A</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -432,6 +429,8 @@
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
+				<key>hideelse</key>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.conditional</string>
@@ -471,14 +470,39 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>qlmanage -p "$alfred_workflow_cache/giphy.gif" &gt;&amp; /dev/null</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9B2E595D-F5A2-418B-91DD-370480080083</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>browser</key>
 				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
 				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
@@ -512,95 +536,104 @@
 		<key>0855551C-AA78-4180-93C5-642EB985FCF9</key>
 		<dict>
 			<key>xpos</key>
-			<integer>370</integer>
+			<real>640</real>
 			<key>ypos</key>
-			<integer>205</integer>
+			<real>420</real>
 		</dict>
 		<key>21CA0C10-1AC1-44DA-A415-E53C081F77AE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>565</integer>
+			<real>900</real>
 			<key>ypos</key>
-			<integer>110</integer>
+			<real>310</real>
 		</dict>
 		<key>3CFF7034-AC3A-4092-A84D-2551B193489F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>520</integer>
+			<real>715</real>
 			<key>ypos</key>
-			<integer>300</integer>
+			<real>535</real>
 		</dict>
 		<key>50084E29-723A-405B-935F-415D34AD03F4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<real>540</real>
 			<key>ypos</key>
-			<integer>230</integer>
+			<real>445</real>
 		</dict>
 		<key>5C659BBC-4632-4F24-8A0F-43ED60BDE8F1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>335</integer>
+			<real>575</real>
 			<key>ypos</key>
-			<integer>345</integer>
+			<real>560</real>
 		</dict>
-		<key>63178F25-7718-4704-A5A4-A092D70B1D7A</key>
+		<key>65A7F2ED-1545-4335-A9C8-1DD24D393F51</key>
 		<dict>
 			<key>xpos</key>
-			<integer>20</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>200</integer>
+			<real>15</real>
+		</dict>
+		<key>6EA7A116-91FB-4255-B91B-4E4637002FEF</key>
+		<dict>
+			<key>xpos</key>
+			<real>205</real>
+			<key>ypos</key>
+			<real>15</real>
 		</dict>
 		<key>7CA423A3-04EC-427D-A864-A120A3FD6800</key>
 		<dict>
 			<key>xpos</key>
-			<integer>205</integer>
+			<real>445</real>
 			<key>ypos</key>
-			<integer>280</integer>
+			<real>495</real>
 		</dict>
 		<key>82301AFA-8982-4D55-9D04-9790E094DE33</key>
 		<dict>
 			<key>xpos</key>
-			<integer>205</integer>
+			<real>445</real>
 			<key>ypos</key>
-			<integer>180</integer>
+			<real>395</real>
 		</dict>
 		<key>8E42C033-455B-4903-9159-27D8D3714DD1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>820</integer>
+			<real>1155</real>
 			<key>ypos</key>
-			<integer>30</integer>
+			<real>230</real>
 		</dict>
 		<key>9B2E595D-F5A2-418B-91DD-370480080083</key>
 		<dict>
 			<key>xpos</key>
-			<integer>975</integer>
+			<real>930</real>
 			<key>ypos</key>
-			<integer>30</integer>
+			<real>505</real>
 		</dict>
 		<key>9DBB8987-1232-4D3C-B815-8BC5E123EB75</key>
 		<dict>
 			<key>xpos</key>
-			<integer>820</integer>
+			<real>1155</real>
 			<key>ypos</key>
-			<integer>170</integer>
+			<real>370</real>
 		</dict>
 		<key>E5E17546-DD67-445C-B05F-C0062F61AAB2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>485</integer>
+			<real>820</real>
 			<key>ypos</key>
-			<integer>140</integer>
+			<real>340</real>
 		</dict>
 		<key>EDF7EAAF-C903-49E8-AD44-E92D87435694</key>
 		<dict>
 			<key>xpos</key>
-			<integer>720</integer>
+			<real>1055</real>
 			<key>ypos</key>
-			<integer>115</integer>
+			<real>315</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>variables</key>
 	<dict>
 		<key>BROWSER</key>
